@@ -1,45 +1,34 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-// func readNumber(prompt: String) -> Double {
-//     print(prompt)
-//     var returnValue = -1.0
-//     guard let userInput = readLine(), let number = Double(userInput), number > 0 else {
-//         print("Invalid number.")
-//         return readNumber(prompt: prompt)
-//     }
-//     returnValue = number
-//     return returnValue
-// }
+func printRoomIntro() {
+    print("This program is for testing functions,")
+    print("You can see this from the fact this text is from a function.")
+}
 
-// @main
-// struct SwiftPlayground {
-//     static func main() {
-//         let maximumItemVolume = 2.0
+func printDivider() {
+    print("--------")
+}
 
-//         let roomLength = readNumber(prompt: "Enter the room length: ")
-//         let roomWidth = readNumber(prompt: "Enter the room length: ")
-//         let roomHeight = readNumber(prompt: "Enter the room length: ")
-        
-//         let roomArea = roomLength * roomWidth
-//         let roomVolume = roomArea * roomHeight
+func printUnitsNote() {
+    print("All measurements are in metres.")
+}
 
-//         print("Room area: \(roomArea)m²")
-//         print("Room volume: \(roomVolume)m³")
+func printGoodbye() {
+    print("Done. Thank you for using this program.")
+}
 
-//         let furnitureVolumes = [1.2, 0.8, 2.5, 0.6, 1.0]
+@main
+struct SwiftPlayground {
+    static func main() {
+        printRoomIntro()
 
-//         var totalFurnitureVolume = 0.0
+        printDivider()
+        print("Summary here")
+        printDivider()
 
-//         furnitureVolumes.enumerated().forEach{ index, volume in
-//             print("Item \(index + 1): \(volume) m³")
-//             if volume > maximumItemVolume {
-//                 print("Oversized item detected.")
-//             }
-//             totalFurnitureVolume += volume
-//         }
+        printUnitsNote()
 
-//         let usableVolume = roomVolume - totalFurnitureVolume
-//         print("Usable volume: \(usableVolume) m³")
-//     }
-// }
+        printGoodbye()
+    }
+}
