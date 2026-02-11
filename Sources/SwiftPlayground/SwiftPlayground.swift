@@ -1,34 +1,22 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-func printRoomIntro() {
-    print("This program is for testing functions,")
-    print("You can see this from the fact this text is from a function.")
+let volume = 3.0
+
+func roomVolume() -> Double {
+    return volume
 }
 
-func printDivider() {
-    print("--------")
-}
-
-func printUnitsNote() {
-    print("All measurements are in metres.")
-}
-
-func printGoodbye() {
-    print("Done. Thank you for using this program.")
+func printArea(length: Double, width: Double) -> String {
+    let area = length * width
+    return "The area of the room is \(area)m²"
 }
 
 @main
 struct SwiftPlayground {
     static func main() {
-        printRoomIntro()
+        print("\(roomVolume())m³")
 
-        printDivider()
-        print("Summary here")
-        printDivider()
-
-        printUnitsNote()
-
-        printGoodbye()
+        printArea(length: 3.0, width: 4.5)
     }
 }
