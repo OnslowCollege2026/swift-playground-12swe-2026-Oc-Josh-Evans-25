@@ -2,7 +2,6 @@
 // https://docs.swift.org/swift-book
 
 func menuChoice() {
-    var userChoice = 0
     print("==== Egg Shop ====")
     print("   1. Add eggs")
     print("   2. Sell eggs")
@@ -12,16 +11,28 @@ func menuChoice() {
     print("   Choose an option:")
     if let choice = readLine(), let choiceNumber = Int(choice) {
         if choiceNumber == 1 {
-            userChoice = choiceNumber
+            print("How many eggs do you want to add?") 
+            let amountAdding = Int(readLine()!)!
+            addEggs(currentStock: 0, amount: amountAdding)
         } else {
             print("Invalid choice. Please enter number from choices 1-5.")
         } 
     }
 }
 
+func addEggs(currentStock: Int, amount: Int) -> Int {
+    return currentStock + amount
+}
+
 @main
 struct SwiftPlayground {
     static func main() {
+        var eggsInStock = 0
+        var eggsSold = 0
         
+        var menuRunning = true
+        while menuRunning == true {
+            menuChoice()
+        }
     }
 }
