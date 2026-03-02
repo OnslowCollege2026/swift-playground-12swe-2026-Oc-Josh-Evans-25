@@ -1,6 +1,12 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+/// Gets user response and checks whether number is valid.
+/// - Parameters:
+///   - error: Error message if value is invalid.
+///   - minNumber: smallest valid number option from the menu.
+///   - maxNumber: largest valid number option from the menu.
+/// - Returns: 
 func userResponse(error: String, minNumber: Int, maxNumber: Int) -> Int {
     var gettingResponse = true
     while gettingResponse {
@@ -44,12 +50,20 @@ func sellEggs(currentStock: Int, amount: Int) -> Int? {
     return eggsSelling
 }
 
+func updateSoldCount(currentSold: Int) {
+    print("You have sold \(currentSold) eggs in total.")
+}
+
+func stockMessage(stock: Int) {
+    print("You currently have \(stock) eggs.")
+}
+
 @main
 struct SwiftPlayground {
     static func main() {
-        var eggsInStock = 0
         var eggsSold = 0
-        
+        var eggsInStock = 0
+
         var menuRunning = true
         while menuRunning == true {
             let menuOption = menuChoice()
@@ -57,9 +71,18 @@ struct SwiftPlayground {
                 eggsInStock = addEggs(currentStock: eggsInStock, amount: eggsInStock)
                 print(eggsInStock)
             } else if menuOption == 2 {
-                eggsInStock = eggsInStock - sellEggs(currentStock: eggsInStock, amount: eggsSold)!
+                eggsSold = sellEggs(currentStock: eggsInStock, amount: eggsSold)!
+                eggsInStock = eggsInStock - eggsSold
                 
                 print(eggsInStock)
+            } else if menuOption == 3 {
+                updateSoldCount(currentSold: eggsSold)
+            } else if menuOption == 4 {
+                stockMessage(stock: eggsInStock)
+            } else if menuOption == 5 {
+                menuRunning = false
+            } else {
+                print("Invalid option. Please try again if you made a mistake.")
             }
         }
     }
