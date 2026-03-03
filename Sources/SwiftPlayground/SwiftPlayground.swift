@@ -1,89 +1,65 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-/// Gets user response and checks whether number is valid.
-/// - Parameters:
-///   - error: Error message if value is invalid.
-///   - minNumber: smallest valid number option from the menu.
-///   - maxNumber: largest valid number option from the menu.
-/// - Returns: 
-func userResponse(error: String, minNumber: Int, maxNumber: Int) -> Int {
-    var gettingResponse = true
-    while gettingResponse {
-        if let response = readLine(), let optionResponse = Int(response) {
-            if optionResponse >= minNumber && optionResponse <= maxNumber {
-                gettingResponse = false
-                return optionResponse
-            } else {
-                print(error)
-            }
-        } else {
-            print(error)
-        }
-    }
+func columnTotal(in table: [[Int]], column: Int) -> Int {
+    guard column >= 0 && column < table.count else { return 0 }
+    return table[column].reduce(0, +)
 }
 
-
-func menuChoice() -> Int {
-    print("==== Egg Shop ====")
-    print("   1. Add eggs")
-    print("   2. Sell eggs")
-    print("   3. Show current stock")
-    print("   4. Show total eggs sold")
-    print("   5. Exit")
-    print("   Choose an option:")
-    let menu = userResponse(error: "Invalid number. Please enter a number from 1 to 5.", minNumber: 1, maxNumber: 5)
-    return menu
-}
-
-func addEggs(currentStock: Int, amount: Int) -> Int {
-    print("How many eggs would you like to add to the current amount?")
-    let eggsAdding = userResponse(error: "You have added too many eggs already.", minNumber: 1, maxNumber: 1000)
-    print("Eggs have been added.")
-    return eggsAdding
-}
-
-func sellEggs(currentStock: Int, amount: Int) -> Int? {
-    print("How many eggs would you like to sell?")
-    let eggsSelling = userResponse(error: "You have no eggs left, please try again when you have eggs.", minNumber: 1, maxNumber: 50)
-    print("Eggs have been sold.")
-    return eggsSelling
-}
-
-func updateSoldCount(currentSold: Int) {
-    print("You have sold \(currentSold) eggs in total.")
-}
-
-func stockMessage(stock: Int) {
-    print("You currently have \(stock) eggs.")
+func maxValue(in table: [[Double]]) {
+    
 }
 
 @main
 struct SwiftPlayground {
     static func main() {
-        var eggsSold = 0
-        var eggsInStock = 0
+        var valuesPrinted = 0
 
-        var menuRunning = true
-        while menuRunning == true {
-            let menuOption = menuChoice()
-            if menuOption == 1 {
-                eggsInStock = addEggs(currentStock: eggsInStock, amount: eggsInStock)
-                print(eggsInStock)
-            } else if menuOption == 2 {
-                eggsSold = sellEggs(currentStock: eggsInStock, amount: eggsSold)!
-                eggsInStock = eggsInStock - eggsSold
-                
-                print(eggsInStock)
-            } else if menuOption == 3 {
-                updateSoldCount(currentSold: eggsSold)
-            } else if menuOption == 4 {
-                stockMessage(stock: eggsInStock)
-            } else if menuOption == 5 {
-                menuRunning = false
-            } else {
-                print("Invalid option. Please try again if you made a mistake.")
+        let temperatures = [
+            [17, 18, 21, 16],
+            [11, 13, 9, 10],
+            [4, 6, 7, 7]
+        ]
+
+        let table = [
+            [2, 4, 6],
+            [8, 10, 12],
+            [14, 16, 18]
+        ]
+
+        let table2 = [
+            [3, 5, 7, 9],
+            [2, 4],
+            [8, 6, 1],
+            [10]
+        ]
+
+        let readings = [
+            [1.5, 3.2, 2.8],
+            [7.1],
+            [4.4, 6.0],
+            [5.9, 8.3, 0.7, 2.2]
+        ]
+
+        print(temperatures[0])
+        print(temperatures[1][2])
+        print(temperatures[2][0])
+
+        let averageTemp = (temperatures[1][0] + temperatures[1][1] + temperatures[1][2] + temperatures[1][3]) / 4
+        print(averageTemp)
+        print("")
+
+        for row in table {
+            for value in row {
+                print(value)
+                valuesPrinted += value
             }
         }
+        print("")
+        print(valuesPrinted)
+        print("")
+
+        print(columnTotal(in: table2, column: 0))
+        print(columnTotal(in: table2, column: 1))
     }
 }
