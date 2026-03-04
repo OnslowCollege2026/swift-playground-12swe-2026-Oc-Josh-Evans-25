@@ -7,7 +7,15 @@ func columnTotal(in table: [[Int]], column: Int) -> Int {
 }
 
 func maxValue(in table: [[Double]]) {
-    
+    var largestValue = 0.0
+
+    for row in table {
+            for value in row {
+                if value > largestValue {
+                    largestValue = value
+                }
+            }
+        }
 }
 
 @main
@@ -55,11 +63,15 @@ struct SwiftPlayground {
                 valuesPrinted += value
             }
         }
+
         print("")
         print(valuesPrinted)
         print("")
 
         print(columnTotal(in: table2, column: 0))
         print(columnTotal(in: table2, column: 1))
+
+        print("")
+        print(maxValue(in: readings))
     }
 }
