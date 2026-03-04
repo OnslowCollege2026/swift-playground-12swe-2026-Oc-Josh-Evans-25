@@ -7,7 +7,7 @@ func columnTotal(in table: [[Int]], column: Int) -> Int {
 }
 
 func maxValue(in table: [[Double]]) {
-    var largestValue = 0.0
+    var largestValue = table[0][0]
 
     for row in table {
             for value in row {
