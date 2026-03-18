@@ -37,7 +37,7 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
         return guesses
     }
 
-    guard guesses[row - 1][col - 1] != "~" else {
+    guard guesses[row - 1][col - 1] == "~" else {
         print("MISS!")
         var newGuesses = guesses
         newGuesses[row - 1][col - 1] = "O"
@@ -101,7 +101,7 @@ struct SwiftPlayground {
             guard let userInput = readLine(), let row = Int(userInput), let userInput2 = readLine(), let col = Int(userInput2) else {
                 print("Your guesses are invalid. Please try again.")
                 i = i - 1
-                return
+                continue
             }
             
             let guesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
