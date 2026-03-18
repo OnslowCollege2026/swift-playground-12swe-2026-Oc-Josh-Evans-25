@@ -32,7 +32,7 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
         return guesses
     }
 
-    guard guesses[row - 1][col - 1] != "O" || guesses[row - 1][col - 1] != "X" else {
+    guard guesses[row - 1][col - 1] != "O" &&  guesses[row - 1][col - 1] != "X" else {
         print("You have already guessed that position. Try again.")
         return guesses
     }
