@@ -51,7 +51,26 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
 }
 
 func remainingShips(in ocean: [[String]], guesses: [[String]]) -> Int {
+    var shipsCount = 0
+    for row in 0...ocean.count-1 {
+        for col in 0...row {
+            if ocean[row][col] == "S" {
+                shipsCount = shipsCount + 1
+            }
+        }
+    }
     
+    var hitCount = 0
+    for row in 0...guesses.count-1 {
+        for col in 0...row {
+            if guesses[row][col] == "X" {
+                hitCount = hitCount + 1
+            }
+        }
+    }
+    
+    return shipsCount - hitCount
+
 }
 
 @main
@@ -71,7 +90,7 @@ struct SwiftPlayground {
         ocean[5][0] = "S"
         ocean[4][3] = "S"
 
-        printBoard(ocean)
+        printBoard(guesses)
 
         
     }
