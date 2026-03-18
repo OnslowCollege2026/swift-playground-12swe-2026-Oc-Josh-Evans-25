@@ -93,7 +93,6 @@ struct SwiftPlayground {
         ocean[5][0] = "S"
         ocean[4][3] = "S"
 
-        printBoard(guesses)
 
         // Lets user make a certain amount of guesses.
         var progress = 1
@@ -104,9 +103,16 @@ struct SwiftPlayground {
                 
                 continue
             }
-            
-            let guesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
             printBoard(guesses)
+            let oldGuesses = guesses
+
+            let newGuesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
+
+            if oldGuesses != newGuesses {
+                progress = progress + 1
+                guesses = newGuesses
+            }
+            
             }
         }
         
