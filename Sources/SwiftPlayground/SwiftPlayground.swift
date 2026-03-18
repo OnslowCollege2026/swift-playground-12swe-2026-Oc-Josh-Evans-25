@@ -96,16 +96,19 @@ struct SwiftPlayground {
         printBoard(guesses)
 
         // Lets user make a certain amount of guesses.
-        for var i in 1...maximumGuesses {
+        var progress = 1
+        while progress < maximumGuesses {
             print("Please enter a row number, press Enter, then a column number: ")
             guard let userInput = readLine(), let row = Int(userInput), let userInput2 = readLine(), let col = Int(userInput2) else {
                 print("Your guesses are invalid. Please try again.")
-                i = i - 1
+                
                 continue
             }
             
             let guesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
             printBoard(guesses)
             }
+        }
+        
+            
     }
-}
