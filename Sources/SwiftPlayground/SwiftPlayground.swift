@@ -4,7 +4,7 @@
 func printBoard(_ board: [[String]]) {
     var columnLabels = ""
     for i in 1...board.count {
-        columnLabels = columnLabels + "\(i) "
+        columnLabels = columnLabels + " \(i)"
     }
     print(columnLabels)
 
@@ -12,7 +12,7 @@ func printBoard(_ board: [[String]]) {
     for row in board {
         var rowString = "\(rowNumber)"
         for cell in row {
-            rowString = rowString + cell + ""
+            rowString = rowString + cell + " "
         }
         rowNumber = rowNumber + 1
         print(rowString)
