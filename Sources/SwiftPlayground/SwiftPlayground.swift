@@ -76,6 +76,9 @@ func remainingShips(in ocean: [[String]], guesses: [[String]]) -> Int {
 @main
 struct SwiftPlayground {
     static func main() {
+        // Max number of guesses.
+        let maximumGuesses = 5
+        
         // The size of the board.
         let size = 6
 
@@ -92,6 +95,14 @@ struct SwiftPlayground {
 
         printBoard(guesses)
 
-        
+        // Lets user make a certain amount of guesses.
+        for i in 1...maximumGuesses {
+            if let userInput = readLine(), let row = Int(userInput), row >= 1, row <= size {
+               if let userInput = readLine(), let col = Int(userInput), col >= 1, col <= size {
+                    let newGuesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
+                    printBoard(guesses)
+                } 
+            }
+        }
     }
 }
