@@ -97,14 +97,14 @@ struct SwiftPlayground {
 
         // Lets user make a certain amount of guesses.
         for i in 1...maximumGuesses {
-            print("Please enter a row number: ")
-            if let userInput = readLine(), let row = Int(userInput) {
-                print("Please enter a col number: ")
-                if let userInput2 = readLine(), let col = Int(userInput2) {
-                    let newGuesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
-                    printBoard(guesses)
-                } 
+            print("Please enter a row number, press Enter, then a column number: ")
+            guard let userInput = readLine(), let row = Int(userInput), let userInput2 = readLine(), let col = Int(userInput2) else {
+                print("Your guesses are invalid. Please try again.")
+                return
             }
-        }
+            let guesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
+            printBoard(guesses)
+                
+            }
     }
 }
