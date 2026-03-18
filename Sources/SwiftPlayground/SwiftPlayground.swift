@@ -50,6 +50,9 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
     return newGuesses
 }
 
+func remainingShips(in ocean: [[String]], guesses: [[String]]) -> Int {
+    
+}
 
 @main
 struct SwiftPlayground {
