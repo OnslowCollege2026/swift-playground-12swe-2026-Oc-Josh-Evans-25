@@ -46,7 +46,7 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
 
     print("You've sunk my battleship!")
     var newGuesses = guesses
-    newGuesses[row - 1][col - 1] = "O"
+    newGuesses[row - 1][col - 1] = "X"
     return newGuesses
 }
 
