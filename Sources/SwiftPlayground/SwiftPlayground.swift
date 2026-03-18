@@ -37,7 +37,7 @@ func processGuess(row: Int, col: Int, ocean: [[String]], guesses: [[String]]) ->
         return guesses
     }
 
-    guard guesses[row - 1][col - 1] == "~" else {
+    guard ocean[row - 1][col - 1] == "X" else {
         print("MISS!")
         var newGuesses = guesses
         newGuesses[row - 1][col - 1] = "O"
