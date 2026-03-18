@@ -102,9 +102,9 @@ struct SwiftPlayground {
                 print("Your guesses are invalid. Please try again.")
                 return
             }
+            
             let guesses = processGuess(row: row, col: col, ocean: ocean, guesses: guesses)
             printBoard(guesses)
-                
             }
     }
 }
