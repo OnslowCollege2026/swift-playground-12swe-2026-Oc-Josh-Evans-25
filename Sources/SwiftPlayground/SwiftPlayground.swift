@@ -6,7 +6,6 @@ func print(board: [[String]]) {
         print("\(line[0]) | \(line[1]) | \(line[2])")
         print("--+---+--")
     }
-    print()
 }
 
 func askForPosition(board: [[String]]) -> [Int] {
@@ -19,6 +18,8 @@ func askForPosition(board: [[String]]) -> [Int] {
                 columnNumber = columnNumber - 1
                 if board[rowNumber][columnNumber] == "." {
                     return [rowNumber, columnNumber]
+                } else {
+                    print("A naught or a cross has already been placed in that position. \n")
                 }
             }
         }
@@ -52,6 +53,8 @@ struct SwiftPlayground {
 
             print(board: board)
         }
+        
+
         // // First move: 0 in middle.
         // board[1][1] = "O"
         // print(board: board)
