@@ -76,9 +76,9 @@ struct SwiftPlayground {
                 
                 print(eggsInStock)
             } else if menuOption == 3 {
-                updateSoldCount(currentSold: eggsSold)
-            } else if menuOption == 4 {
                 stockMessage(stock: eggsInStock)
+            } else if menuOption == 4 {
+                updateSoldCount(currentSold: eggsSold)
             } else if menuOption == 5 {
                 menuRunning = false
             } else {
