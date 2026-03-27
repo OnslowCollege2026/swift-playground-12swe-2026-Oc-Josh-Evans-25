@@ -34,7 +34,6 @@ struct SwiftPlayground {
             print("Translate this word: \(vocabulary[index][0])")            
             
             let shuffledAnswers = word[1...4].shuffled()
-            print(shuffledAnswers)
 
             // Present the possible answers.
             print("1. \(vocabulary[index][1])")
