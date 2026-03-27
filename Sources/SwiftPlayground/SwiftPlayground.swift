@@ -43,13 +43,9 @@ struct SwiftPlayground {
 
             if let response = readLine(), let userResponse = Int(response) {
                 if userResponse == 1 {
-                    
-                } else if userResponse == 2 {
-
-                } else if userResponse == 3 {
-
-                } else if userResponse == 4 {
-
+                    print("Correct!")
+                } else {
+                    print("Wrong! Try the next question.")
                 }
             }
 
