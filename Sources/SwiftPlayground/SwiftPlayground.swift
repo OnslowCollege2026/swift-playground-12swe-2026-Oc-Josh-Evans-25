@@ -51,6 +51,8 @@ struct SwiftPlayground {
                     incorrectCount += 1
                     print(incorrectCount)
                 }
+            } else {
+                print("Invalid answer. Please try the next question and answer correctly.")
             }
 
             // Check if the user guessed the correct answer.
