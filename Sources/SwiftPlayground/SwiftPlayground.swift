@@ -47,18 +47,16 @@ struct SwiftPlayground {
                 if userResponse == 1 {
                     print("Correct!")
                 } else {
-                    // print("Wrong! Try the next question.")
+                    print("Wrong! Try the next question.")
                     incorrectCount += 1
-                    print(incorrectCount)
                 }
             } else {
                 print("Invalid answer. Please try the next question and answer correctly.")
+                incorrectCount += 1
             }
 
             // Check if the user guessed the correct answer.
             // If not, make a note of the question to ask again later.
         }
-
-        
     }
 }
