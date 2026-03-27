@@ -35,8 +35,12 @@ struct SwiftPlayground {
             
             // let shuffledAnswers = word[1...4].shuffled()
 
+            var randomNumber = 0
+
+            randomNumber = randomNumber.random(in: 1...4)()
+
             // Present the possible answers.
-            print("1. \(vocabulary[index][1.random(in: 1...4)()])")
+            print("1. \(vocabulary[index][1])")
             print("2. \(vocabulary[index][2])")
             print("3. \(vocabulary[index][3])")
             print("4. \(vocabulary[index][4])")
