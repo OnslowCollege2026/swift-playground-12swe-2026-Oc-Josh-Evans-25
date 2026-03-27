@@ -41,7 +41,7 @@ struct SwiftPlayground {
             print("3. \(vocabulary[index][3])")
             print("4. \(vocabulary[index][4])")
 
-            print("\nEnter your guess for \(vocabulary[index][0]): ")
+            print("\nEnter your guess for \(vocabulary[index][0]) from either 1-4: ")
 
             if let response = readLine(), let userResponse = Int(response) {
                 if userResponse == 1 {
