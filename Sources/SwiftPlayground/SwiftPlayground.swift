@@ -45,7 +45,7 @@ struct SwiftPlayground {
                 if userResponse == 1 {
                     print("Correct!")
                 } else {
-                    print("Wrong! Try the next question.")
+                    // print("Wrong! Try the next question.")
                     incorrectCount += 1
                     print(incorrectCount)
                 }
