@@ -33,6 +33,8 @@ struct SwiftPlayground {
             // Show the question.
             print("Translate this word: \(vocabulary[index][0])")            
             
+            let shuffledAnswers = word.shuffled()
+
             // Present the possible answers.
             print("1. \(vocabulary[index][1])")
             print("2. \(vocabulary[index][2])")
