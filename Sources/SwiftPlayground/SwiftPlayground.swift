@@ -42,7 +42,15 @@ struct SwiftPlayground {
             print("\nEnter your guess for \(vocabulary[index][0]): ")
 
             if let response = readLine(), let userResponse = Int(response) {
-                
+                if userResponse == 1 {
+                    
+                } else if userResponse == 2 {
+
+                } else if userResponse == 3 {
+
+                } else if userResponse == 4 {
+
+                }
             }
 
             // Check if the user guessed the correct answer.
