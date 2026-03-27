@@ -46,6 +46,8 @@ struct SwiftPlayground {
                     print("Correct!")
                 } else {
                     print("Wrong! Try the next question.")
+                    incorrectCount += 1
+                    print(incorrectCount)
                 }
             }
 
