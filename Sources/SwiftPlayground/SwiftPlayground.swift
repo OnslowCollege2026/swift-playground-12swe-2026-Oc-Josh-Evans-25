@@ -37,7 +37,7 @@ struct SwiftPlayground {
 
             var randomNumber = 0
 
-            randomNumber = randomNumber.random(in: 1...4)()
+            randomNumber = Int.random(in: 1...4)()
 
             // Present the possible answers.
             print("1. \(vocabulary[index][1])")
