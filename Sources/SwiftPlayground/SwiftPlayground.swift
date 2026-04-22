@@ -27,7 +27,7 @@ func userResponse(error: String, minNumber: Int, maxNumber: Int) -> Int {
 
 func menuChoice() -> Int {
     print("==== Kumara Stall ====")
-    print("   1. Buy Kumara")
+    print("   1. Make a sale")
     print("   2. Sales Records")
     print("   3. Show current stock")
     print("   4. Summary information")
@@ -38,9 +38,40 @@ func menuChoice() -> Int {
     return menu
 }
 
+func kumaraSale(kumaraStock: Int) -> Double {
+    var totalCost = 0.0
+    if kumaraStock > 0 {
+        print("How much does your Kumara weigh? (Kilograms)")
+        if let input = readLine(), let kumaraWeight = Double(input) {
+            totalCost = kumaraWeight * 3 + 0.2
+        }
+    }
+    return totalCost
+}
+
 @main
 struct SwiftPlayground {
     static func main() {
-        
+        var kumaraStock = 10
+
+        var menuRunning = true
+        while menuRunning == true {
+            let menuOption = menuChoice()
+            if menuOption == 1 {
+                print(kumaraSale(kumaraStock: kumaraStock))
+            } else if menuOption == 2 {
+                
+            } else if menuOption == 3 {
+                
+            } else if menuOption == 4 {
+                
+            } else if menuOption == 5 {
+
+            } else if menuOption == 6 {
+                menuRunning = false
+            } else {
+                print("Invalid option. Please try again if you made a mistake.")
+            }
+        }
     }
 }
