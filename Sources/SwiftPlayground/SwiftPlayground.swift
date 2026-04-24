@@ -34,16 +34,26 @@ func menuChoice() -> Int {
     print("   5. Add Kumara to stock")
     print("   6. Exit")
     print("   Choose an option 1-6:")
-    let menu = userResponse(error: "Invalid number. Please enter a number from 1 to 5.", minNumber: 1, maxNumber: 5)
+    let menu = userResponse(error: "Invalid number. Please enter a number from 1 to 5.", minNumber: 1, maxNumber: 6)
     return menu
 }
 
-func kumaraSale(kumaraStock: Int) -> Double {
+func kumaraSale(kumaraStock: Double) -> Double {
     var totalCost = 0.0
+    let kumaraCost = 3.0
+    let bagCost = 0.2
+
     if kumaraStock > 0 {
-        print("How much does your Kumara weigh? (Kilograms)")
-        if let input = readLine(), let kumaraWeight = Double(input) {
-            totalCost = kumaraWeight * 3 + 0.2
+        print("Kumara are $3 per kilogram.")
+        print("How much do the Kumara you're buying weigh?")
+        if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight < kumaraStock {
+            
+            // Fix rounding issue so that bag amount divides and then is rounded up to correct number
+            
+            let bagAmount = (kumaraWeight / 5.3).rounded() 
+            print(bagAmount)
+            // totalCost = kumaraWeight * kumaraCost + (bagCost * bagAmount)
+            // print("Your total cost is $\(totalCost).")
         }
     }
     return totalCost
@@ -52,21 +62,37 @@ func kumaraSale(kumaraStock: Int) -> Double {
 @main
 struct SwiftPlayground {
     static func main() {
-        var kumaraStock = 10
+        var kumaraStock = 10.0
+
+        var sales = [0.0]
+        sales.removeFirst()
+
+        var kumaraWeightBought = [0.0]
+        kumaraWeightBought.removeFirst()
+
+        var kumaraBagsBought = [0]
+        kumaraBagsBought.removeFirst()
 
         var menuRunning = true
         while menuRunning == true {
             let menuOption = menuChoice()
             if menuOption == 1 {
-                print(kumaraSale(kumaraStock: kumaraStock))
+                sales.append(kumaraSale(kumaraStock: kumaraStock))
+                print(sales)
             } else if menuOption == 2 {
                 
             } else if menuOption == 3 {
-                
+                print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
                 
             } else if menuOption == 5 {
-
+                print("How much Kumara in kilograms will you add to the stock?")
+                if let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 {
+                    kumaraStock += kumaraAdded
+                    print("You added \(kumaraAdded)kg of Kumara to the stock.")
+                } else {
+                    print("Invalid number. Please try again.")
+                }
             } else if menuOption == 6 {
                 menuRunning = false
             } else {
