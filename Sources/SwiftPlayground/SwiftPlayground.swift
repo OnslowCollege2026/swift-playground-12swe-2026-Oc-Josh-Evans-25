@@ -34,7 +34,7 @@ func menuChoice() -> Int {
     print("   5. Add Kumara to stock")
     print("   6. Exit")
     print("   Choose an option 1-6:")
-    let menu = userResponse(error: "Invalid number. Please enter a number from 1 to 5.", minNumber: 1, maxNumber: 6)
+    let menu = userResponse(error: "Invalid number. Please enter a number from 1 to 6.", minNumber: 1, maxNumber: 6)
     return menu
 }
 
@@ -42,20 +42,18 @@ func kumaraSale(kumaraStock: Double) -> Double {
     var totalCost = 0.0
     let kumaraCost = 3.0
     let bagCost = 0.2
+    let bagWeights = 2.5
 
     if kumaraStock > 0 {
         print("Kumara are $3 per kilogram.")
         print("How much do the Kumara you're buying weigh?")
         if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight < kumaraStock {
-            
-            // Fix rounding issue so that bag amount divides and then is rounded up to correct number
-            
-            let bagAmount = (kumaraWeight / 5.3).rounded() 
-            print(bagAmount)
-            // totalCost = kumaraWeight * kumaraCost + (bagCost * bagAmount)
-            // print("Your total cost is $\(totalCost).")
-        }
-    }
+            let bagAmount = (kumaraWeight / bagWeights).rounded()
+            let totalBagCost = bagAmount * bagCost
+            totalCost = (kumaraWeight * kumaraCost) + totalBagCost
+            print("Your total cost is $\(totalCost).")
+        } 
+    } 
     return totalCost
 }
 
@@ -64,7 +62,12 @@ struct SwiftPlayground {
     static func main() {
         var kumaraStock = 10.0
 
-        var sales = [0.0]
+        // Stores the cost of each sale, bag amount, and 
+        var sales = [
+            [0.0],
+            [0.0],
+            [0.0]
+        ]
         sales.removeFirst()
 
         var kumaraWeightBought = [0.0]
@@ -84,7 +87,7 @@ struct SwiftPlayground {
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
-                
+                // kumaraWeightSold / number of bags used = how much kumara to put in each bag
             } else if menuOption == 5 {
                 print("How much Kumara in kilograms will you add to the stock?")
                 if let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 {
