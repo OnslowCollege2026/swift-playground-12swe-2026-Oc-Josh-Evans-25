@@ -38,23 +38,25 @@ func menuChoice() -> Int {
     return menu
 }
 
-func kumaraSale(kumaraStock: Double) -> Double {
-    var totalCost = 0.0
-    let kumaraCost = 3.0
-    let bagCost = 0.2
-    let bagWeights = 2.5
-
+func kumaraSale(kumaraStock: Double, kumaraCost: Double, bagCost: Double) {
     if kumaraStock > 0 {
         print("Kumara are $3 per kilogram.")
         print("How much do the Kumara you're buying weigh?")
         if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight < kumaraStock {
-            let bagAmount = (kumaraWeight / bagWeights).rounded()
-            let totalBagCost = bagAmount * bagCost
-            totalCost = (kumaraWeight * kumaraCost) + totalBagCost
-            print("Your total cost is $\(totalCost).")
-        } 
+            saleCalculation(bagCost: bagCost, kumaraStock: kumaraStock, kumaraWeight: kumaraWeight, kumaraCost: kumaraCost)
+        }
     } 
-    return totalCost
+} 
+
+func saleCalculation(bagCost: Double, kumaraStock: Double, kumaraWeight: Double, kumaraCost: Double) -> Double {
+    var totalCost = 0.0
+        let bagWeights = 2.5
+        
+        let bagAmount = (kumaraWeight / bagWeights).rounded()
+        let totalBagCost = bagAmount * bagCost
+        totalCost = (kumaraWeight * kumaraCost) + totalBagCost
+        print("Your total cost is $\(totalCost).")
+        return totalCost
 }
 
 @main
@@ -62,12 +64,12 @@ struct SwiftPlayground {
     static func main() {
         var kumaraStock = 10.0
 
+        let kumaraCost = 3.0
+
+        let bagCost = 0.2
+
         // Stores the cost of each sale, bag amount, and 
-        var sales = [
-            [0.0],
-            [0.0],
-            [0.0]
-        ]
+        var sales = [0.0]
         sales.removeFirst()
 
         var kumaraWeightBought = [0.0]
@@ -80,7 +82,7 @@ struct SwiftPlayground {
         while menuRunning == true {
             let menuOption = menuChoice()
             if menuOption == 1 {
-                sales.append(kumaraSale(kumaraStock: kumaraStock))
+                sales.append(kumaraSale(kumaraStock: kumaraStock, kumaraCost: kumaraCost, bagCost: bagCost))
                 print(sales)
             } else if menuOption == 2 {
                 
