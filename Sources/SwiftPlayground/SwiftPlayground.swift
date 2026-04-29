@@ -38,31 +38,21 @@ func menuChoice() -> Int {
     return menu
 }
 
-func kumaraSale(kumaraStock: Double, kumaraCost: Double, bagCost: Double) {
-    if kumaraStock > 0 {
-        print("Kumara are $3 per kilogram.")
-        print("How much do the Kumara you're buying weigh?")
-        if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight < kumaraStock {
-            saleCalculation(bagCost: bagCost, kumaraStock: kumaraStock, kumaraWeight: kumaraWeight, kumaraCost: kumaraCost)
-        }
-    } 
-} 
-
-func saleCalculation(bagCost: Double, kumaraStock: Double, kumaraWeight: Double, kumaraCost: Double) -> Double {
+func kumaraSale(kumaraStock: Double, kumaraCost: Double, bagCost: Double, kumaraWeight: Double) -> Double {
     var totalCost = 0.0
-        let bagWeights = 2.5
-        
-        let bagAmount = (kumaraWeight / bagWeights).rounded()
-        let totalBagCost = bagAmount * bagCost
-        totalCost = (kumaraWeight * kumaraCost) + totalBagCost
-        print("Your total cost is $\(totalCost).")
-        return totalCost
-}
+    let bagWeights = 2.5
+
+    let bagAmount = (kumaraWeight / bagWeights).rounded()
+    let totalBagCost = bagAmount * bagCost
+    totalCost = (kumaraWeight * kumaraCost) + totalBagCost
+    print("Your total cost is $\(totalCost).")
+    return totalCost
+} 
 
 @main
 struct SwiftPlayground {
     static func main() {
-        var kumaraStock = 10.0
+        var kumaraStock = 15.0
 
         let kumaraCost = 3.0
 
@@ -82,9 +72,19 @@ struct SwiftPlayground {
         while menuRunning == true {
             let menuOption = menuChoice()
             if menuOption == 1 {
-                sales.append(kumaraSale(kumaraStock: kumaraStock, kumaraCost: kumaraCost, bagCost: bagCost))
-                print(sales)
+                // Fully hash out buying system so user can grab kumara, weigh them, and then calculate the cost
+                
+                if kumaraStock > 0 {
+                    print("Kumara are $3 per kilogram.")
+                    print("How much do the Kumara you're buying weigh?")
+                    if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight <= kumaraStock {
+                        let saleResult = kumaraSale(kumaraStock: kumaraStock, kumaraCost: kumaraCost, bagCost: bagCost, kumaraWeight: kumaraWeight)
+                        sales.append(saleResult)
+                        print(sales)    
+                    }
+                }
             } else if menuOption == 2 {
+                // Print off each individual sale
                 
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
