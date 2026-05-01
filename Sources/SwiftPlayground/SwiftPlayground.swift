@@ -89,6 +89,7 @@ struct SwiftPlayground {
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
+                // let kumaraPerBag = kumaraSoldTotal / bagsUsed
                 // kumaraWeightSold / number of bags used = how much kumara to put in each bag
             } else if menuOption == 5 {
                 print("How much Kumara in kilograms will you add to the stock?")
