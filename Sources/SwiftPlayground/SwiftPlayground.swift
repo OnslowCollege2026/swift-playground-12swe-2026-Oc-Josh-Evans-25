@@ -50,12 +50,18 @@ func rowTotal(in matrix: [[Int]], row: Int) -> Int {
     return matrix[row].reduce(0, +)
 }
 
+// To-do:
+// - Need to change to be guard lets instead of if lets
+// - Add summary info
+// - Finish foreach loop that prints the sales
+// - Boundary testing
+// - Add comments
+// - Modify to prevent crashs for invalid testing
+
 @main
 struct SwiftPlayground {
     static func main() {
         var kumaraStock = 15.0
-
-        let emptyBin = 0
 
         let kumaraCost = 3.0
 
@@ -94,9 +100,9 @@ struct SwiftPlayground {
                     }
                 }
             } else if menuOption == 2 {
-                // Print off each individual sale
+                print("These are sales that have been made so far: ")
                 sales.forEach{ sale in
-
+                    // Print out each individual sale
                 }
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
