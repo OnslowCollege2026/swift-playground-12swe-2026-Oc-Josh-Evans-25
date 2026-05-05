@@ -45,10 +45,17 @@ func kumaraSale(kumaraCost: Double, bagCost: Double, kumaraWeight: Double, bagAm
     return totalCost
 } 
 
+func rowTotal(in matrix: [[Int]], row: Int) -> Int {
+    guard row >= 0 && row < matrix.count else { return 0 }
+    return matrix[row].reduce(0, +)
+}
+
 @main
 struct SwiftPlayground {
     static func main() {
         var kumaraStock = 15.0
+
+        let emptyBin = 0
 
         let kumaraCost = 3.0
 
@@ -67,30 +74,34 @@ struct SwiftPlayground {
         while menuRunning == true {
             let menuOption = menuChoice()
             if menuOption == 1 {
-                // Fully hash out buying system so user can grab kumara, weigh them, and then calculate the cost
-                
                 if kumaraStock > 0 {
                     print("Kumara are $3 per kilogram.")
                     print("How many Kilograms of Kumara do you want to buy?")
                     if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight <= kumaraStock {
                         sales[0].append(kumaraWeight)
-                        print("How many bags do you want to buy?")
+                        print("How many bags would you like? Each bag can hold 5kg of Kumara.")
                         if let input2 = readLine(), let bagAmount = Double(input2), bagAmount <= bagStock {
-                            sales[1].append(bagAmount)
-                            let saleResult = kumaraSale(kumaraCost: kumaraCost, bagCost: bagCost, kumaraWeight: kumaraWeight, bagAmount: bagAmount)
-                            sales[2].append(saleResult) 
-                            print(sales)
-                        }    
+                            if bagAmount < kumaraWeight / 5 {
+                                print("Invalid amount of bags.") 
+                                print("Please check you have at least 1 bag per 5kg of Kumara and try again.")
+                            } else {
+                                sales[1].append(bagAmount)
+                                let saleResult = kumaraSale(kumaraCost: kumaraCost, bagCost: bagCost, kumaraWeight: kumaraWeight, bagAmount: bagAmount)
+                                sales[2].append(saleResult) 
+                                print(sales)
+                            }
+                        } 
                     }
                 }
             } else if menuOption == 2 {
                 // Print off each individual sale
-                
+                sales.forEach{ sale in
+
+                }
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
                 // let kumaraPerBag = kumaraSoldTotal / bagsUsed
-                // kumaraWeightSold / number of bags used = how much kumara to put in each bag
             } else if menuOption == 5 {
                 print("How much Kumara in kilograms will you add to the stock?")
                 if let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 {
