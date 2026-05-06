@@ -1,45 +1,51 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-// func readNumber(prompt: String) -> Double {
-//     print(prompt)
-//     var returnValue = -1.0
-//     guard let userInput = readLine(), let number = Double(userInput), number > 0 else {
-//         print("Invalid number.")
-//         return readNumber(prompt: prompt)
-//     }
-//     returnValue = number
-//     return returnValue
-// }
-
-// @main
-// struct SwiftPlayground {
-//     static func main() {
-//         let maximumItemVolume = 2.0
-
-//         let roomLength = readNumber(prompt: "Enter the room length: ")
-//         let roomWidth = readNumber(prompt: "Enter the room length: ")
-//         let roomHeight = readNumber(prompt: "Enter the room length: ")
+@main
+struct SwiftPlayground {
+    static func main() {
+        var sales = [[], [], []]
         
-//         let roomArea = roomLength * roomWidth
-//         let roomVolume = roomArea * roomHeight
+        let bagStock = 5000.0
 
-//         print("Room area: \(roomArea)m²")
-//         print("Room volume: \(roomVolume)m³")
+        print("How many kilograms of Kumara do you want to buy?")
+        guard let input = readLine(),
+        let kumaraWeight = Double(input) else {
+            return
+        }
+        sales[0].append(kumaraWeight)
 
-//         let furnitureVolumes = [1.2, 0.8, 2.5, 0.6, 1.0]
+        print("How many bags would you like?")
+        guard let input2 = readLine(),
+        let bagAmount = Double(input2),
+        bagAmount <= bagStock else {
+            return
+        }
 
-//         var totalFurnitureVolume = 0.0
+        if bagAmount < kumaraWeight / 5 {
 
-//         furnitureVolumes.enumerated().forEach{ index, volume in
-//             print("Item \(index + 1): \(volume) m³")
-//             if volume > maximumItemVolume {
-//                 print("Oversized item detected.")
-//             }
-//             totalFurnitureVolume += volume
-//         }
+        } else {
+            sales[1].append(bagAmount)
+            print(sales)
+        }
+    }
+}
 
-//         let usableVolume = roomVolume - totalFurnitureVolume
-//         print("Usable volume: \(usableVolume) m³")
-//     }
-// }
+// if kumaraStock > 0 {
+//                     print("Kumara are $3 per kilogram.")
+//                     print("How many Kilograms of Kumara do you want to buy?")
+//                     if let input = readLine(), let kumaraWeight = Double(input), kumaraWeight <= kumaraStock {
+//                         sales[0].append(kumaraWeight)
+//                         print("How many bags would you like? Each bag can hold 5kg of Kumara.")
+//                         if let input2 = readLine(), let bagAmount = Double(input2), bagAmount <= bagStock {
+//                             if bagAmount < kumaraWeight / 5 {
+//                                 print("Invalid amount of bags.") 
+//                                 print("Please check you have at least 1 bag per 5kg of Kumara and try again.")
+//                             } else {
+//                                 sales[1].append(bagAmount)
+//                                 let saleResult = kumaraSale(kumaraCost: kumaraCost, bagCost: bagCost, kumaraWeight: kumaraWeight, bagAmount: bagAmount)
+//                                 sales[2].append(saleResult) 
+//                                 print(sales)
+//                             }
+//                         } 
+//                     }
