@@ -4,35 +4,51 @@
 @main
 struct SwiftPlayground {
     static func main() {
-        var sales: [[Double]] = [[], [], []]
+        // var sales: [[Double]] = [[], [], []]
         
-        let bagStock = 5000.0
+        // let bagStock = 5000.0
 
-        print("How many kilograms of Kumara do you want to buy?")
-        guard let input = readLine(),
-        let kumaraWeight = Double(input) else {
-            return
-        }
-        sales[0].append(kumaraWeight)
+        // print("How many kilograms of Kumara do you want to buy?")
+        // guard let input = readLine(),
+        // let kumaraWeight = Double(input) else {
+        //     return
+        // }
+        // sales[0].append(kumaraWeight)
 
-        print("How many bags would you like?")
-        guard let input2 = readLine(),
-        let bagAmount = Double(input2),
-        bagAmount <= bagStock else {
-            return
-        }
+        // print("How many bags would you like?")
+        // guard let input2 = readLine(),
+        // let bagAmount = Double(input2),
+        // bagAmount <= bagStock else {
+        //     return
+        // }
 
-        if bagAmount < kumaraWeight / 5 {
+        // if bagAmount < kumaraWeight / 5 {
 
-        } else {
-            sales[1].append(bagAmount) 
-            print(sales)
-        }
+        // } else {
+        //     sales[1].append(bagAmount) 
+        //     print(sales)
+        // }
 
-        sales.forEach { sale in
-            sale.forEach { amount in
-                print("Amount bought: \(amount)")
+        let salesData: [[Int]] = [
+        [10, 20, 30], // Day 1
+        [15, 25, 35], // Day 2
+        [20, 30, 40]  // Day 3
+        ]
+
+        let numRows = salesData.count
+        let numCols = salesData[0].count
+
+        print("--- Printing Column by Column ---")
+        
+        // Outer loop: Columns
+        for col in 0..<numCols {
+            print("Sale \(col + 1):")
+            
+            // Inner loop: Rows
+            for row in 0..<numRows {
+                print(salesData[col][row], terminator: "")
             }
+            print("\n") // Newline after each column
         }
     }
 }
