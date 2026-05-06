@@ -4,7 +4,7 @@
 @main
 struct SwiftPlayground {
     static func main() {
-        var sales = [[], [], []]
+        var sales: [[Double]] = [[], [], []]
         
         let bagStock = 5000.0
 
@@ -25,8 +25,14 @@ struct SwiftPlayground {
         if bagAmount < kumaraWeight / 5 {
 
         } else {
-            sales[1].append(bagAmount)
+            sales[1].append(bagAmount) 
             print(sales)
+        }
+
+        sales.forEach { sale in
+            sale.forEach { amount in
+                print("Amount bought: \(amount)")
+            }
         }
     }
 }
