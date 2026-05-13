@@ -139,6 +139,7 @@ struct SwiftPlayground {
                 let numberInColumn = sales[0].count
                 print("These are sales that have been made so far: \n")
 
+                // Loops through each column and prints out details of each sale.
                 for col in 0..<numberInColumn {
                     print("Sale \(col + 1): ")
                     
@@ -150,22 +151,32 @@ struct SwiftPlayground {
                     print("Kumara Weight Bought: \(kumaraWeightRow)kg ")
                     print("Amount of Bags: \(bagAmountRow) \n")
                 } 
+
+            // Accords to the menu option that shows user current Kumara stock in kgs.
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
+
+            // Accords to the summary information option.
             } else if menuOption == 4 {
+                // Finds the total of the Kumara weight bought and total bags bought using the rowTotal function.
                 let totalKumaraWeight = rowTotal(in: sales, row: 0)
                 let totalBagsBought = rowTotal(in: sales, row: 1)
 
+                // Calculates amount of Kumara per bag using kumara weight sold / number of bags used = how much kumara to put in each bag
                 let kumaraPerBag = (totalKumaraWeight / totalBagsBought).rounded()
                 print("The amount of Kumara that we should have for pre-bagged Kumara sales is \(kumaraPerBag)kg.")
+
+            // Accords to the option that allows the user to add more Kumara to the stock.
             } else if menuOption == 5 {
                 print("How much Kumara in kilograms will you add to the stock?")
-                if let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 {
-                    kumaraStock += kumaraAdded
-                    print("You added \(kumaraAdded)kg of Kumara to the stock.")
-                } else {
+                guard let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 else {
                     print("Invalid number. Please try again.")
-                }
+                    return
+                } 
+                kumaraStock += kumaraAdded
+                print("You added \(kumaraAdded)kg of Kumara to the stock.")
+
+            // Stops the program if the user chooses to do so.
             } else if menuOption == 6 {
                 menuRunning = false
             } else {
