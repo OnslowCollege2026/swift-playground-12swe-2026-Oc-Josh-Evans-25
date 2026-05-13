@@ -1,7 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-func rowTotal(in matrix: [[Int]], row: Int) -> Int {
+func rowTotal(in matrix: [[Double]], row: Int) -> Double {
     guard row >= 0 && row < matrix.count else { return 0 }
     return matrix[row].reduce(0, +)
 }
@@ -9,14 +9,15 @@ func rowTotal(in matrix: [[Int]], row: Int) -> Int {
 @main
 struct SwiftPlayground {
     static func main() {
-        var sales: [[Double]] = [[], [], []]
+        // var sales: [[Double]] = [[], [], []]
         
-        let bagStock = 5000.0
+        // let bagStock = 5000.0
 
-        var averagePrice: Int
+        // var averagePrice: Double
 
-        averagePrice = rowTotal(in: sales, row: averagePrice)
-        print(averagePrice)
+        // sales.enumerated().forEach{ index, sale in
+        //     averagePrice = rowTotal(in: sales, row: index)
+        // }
 
         // print("How many kilograms of Kumara do you want to buy?")
         // guard let input = readLine(),
@@ -39,31 +40,35 @@ struct SwiftPlayground {
         //     print(sales)
         // }
 
-//         let salesData: [[Int]] = [
-//         [10, 20, 30], // Day 1
-//         [15, 25, 35], // Day 2
-//         [20, 30, 40]  // Day 3
-//         ]
+        let salesData: [[Double]] = [
+        [10, 20, 30], // Purchase Price
+        [15, 25, 35], // KumaraWeight
+        [20, 30, 40]  // BagsBought
+        ]
 
-//         let numRows = salesData.count
-//         let numCols = salesData[0].count
+        let averageKumaraWeight = rowTotal(in: salesData, row: 0)
+        let averageBagsBought = rowTotal(in: salesData, row: 1)
 
-//         print("--- Printing Column by Column ---")
-        
-//         // Outer loop: Columns
-//         for col in 0..<numCols {
-//             print("Sale \(col + 1):")
+        let kumaraPerBag = averageKumaraWeight / averageBagsBought
+        print(kumaraPerBag)
             
-//             let price = salesData[0][col]
-//             let weight = salesData[1][col]
-//             let bags = salesData[2][col]
+        // let numCols = salesData[0].count
 
-//             print("Price: \(price)")
-//             print("WeightBought: \(weight)")
-//             print("BagsBought: \(bags) \n")
-//         }
-//     }
-// }
+        // print("--- Printing Column by Column ---")
+        
+        // // Outer loop: Columns
+        // for col in 0..<numCols {
+        //     print("Sale \(col + 1):")
+            
+        //     let price = salesData[0][col]
+        //     let weight = salesData[1][col]
+        //     let bags = salesData[2][col]
+
+        //     print("Price: \(price)")
+        //     print("WeightBought: \(weight)")
+        //     print("BagsBought: \(bags) \n")
+        }
+    }
 
 // if kumaraStock > 0 {
 //                     print("Kumara are $3 per kilogram.")
