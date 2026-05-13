@@ -44,11 +44,13 @@ struct SwiftPlayground {
         for col in 0..<numCols {
             print("Sale \(col + 1):")
             
-            // Inner loop: Rows
-            for row in 0..<numRows {
-                print(salesData[col][row], terminator: "")
-            }
-            print("\n") // Newline after each column
+            let price = salesData[0][col]
+            let weight = salesData[1][col]
+            let bags = salesData[2][col]
+
+            print("Price: \(price)")
+            print("WeightBought: \(weight)")
+            print("BagsBought: \(bags) \n")
         }
     }
 }
