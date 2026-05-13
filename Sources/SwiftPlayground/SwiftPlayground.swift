@@ -100,10 +100,20 @@ struct SwiftPlayground {
                     }
                 }
             } else if menuOption == 2 {
-                print("These are sales that have been made so far: ")
-                sales.forEach{ sale in
-                    // Print out each individual sale
-                }
+                let numberInColumn = sales[0].count
+                print("These are sales that have been made so far: \n")
+
+                for i in 0..<numberInColumn {
+                    print("Sale \(i + 1): ")
+                    
+                    let kumaraWeightRow = sales[0]
+                    let bagAmountRow = sales[1]
+                    let saleCostRow = sales[2]
+
+                    print("Purchase amount: $\(saleCostRow)")
+                    print("Kumara Weight Bought: \(kumaraWeightRow)kg ")
+                    print("Amount of Bags: \(bagAmountRow) \n")
+                } 
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
