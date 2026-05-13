@@ -45,37 +45,38 @@ func kumaraSale(kumaraCost: Double, bagCost: Double, kumaraWeight: Double, bagAm
     return totalCost
 } 
 
-func rowTotal(in matrix: [[Int]], row: Int) -> Int {
+func rowTotal(in matrix: [[Double]], row: Int) -> Double {
     guard row >= 0 && row < matrix.count else { return 0 }
     return matrix[row].reduce(0, +)
 }
 
 // To-do:
-// - Need to change to be guard lets instead of if lets
-// - Add summary info
-// - Finish foreach loop that prints the sales
-// - Boundary testing
 // - Add comments
-// - Modify to prevent crashs for invalid testing
+// - Invalid testing if have the time?
 
 @main
 struct SwiftPlayground {
     static func main() {
+        // Default amount of stock when the program starts
         var kumaraStock = 15.0
 
+        // The finite cost of each kg of Kumara
         let kumaraCost = 3.0
 
+        // The total amount of bags in stock for the user.
         let bagStock = 5000.0
 
+        // The cost per bag needed to hold 5kg of Kumara
         let bagCost = 0.2
 
-        // Stores the cost of each sale, bag amount, and 
+        // Stores each sales, kumara weight, bag amount, and price.
         var sales: [[Double]] = [
-            [],
-            [],
-            [],
+            [], // Kumara weight bought
+            [], // Bags Bought
+            [], // Total price of Sale
         ]
 
+        // Loop that runs until the user chooses to exit.
         var menuRunning = true
         while menuRunning == true {
             let menuOption = menuChoice()
@@ -83,7 +84,8 @@ struct SwiftPlayground {
                 if kumaraStock > 0 {
                     print("Kumara are $3 per kilogram.")
                     print("How many Kilograms of Kumara do you want to buy?")
-                    guard let input = readLine(), let kumaraWeight = Double(input), kumaraWeight <= kumaraStock else {
+                    guard let input = readLine(), let kumaraWeight = Double(input), kumaraWeight > 0, kumaraWeight <= kumaraStock else {
+                        print("Please enter a valid number of Kumara that you want to buy.")
                         return
                     }
                     sales[0].append(kumaraWeight)
@@ -91,6 +93,7 @@ struct SwiftPlayground {
                     guard let input2 = readLine(), let bagAmount = Double(input2), bagAmount <= bagStock else {
                         return
                     }
+
                     if bagAmount < kumaraWeight / 5 {
                         print("Invalid amount of bags.") 
                         print("Please check you have at least 1 bag per 5kg of Kumara and try again.")
@@ -99,7 +102,9 @@ struct SwiftPlayground {
                         let saleResult = kumaraSale(kumaraCost: kumaraCost, bagCost: bagCost, kumaraWeight: kumaraWeight, bagAmount: bagAmount)
                         sales[2].append(saleResult)
                     }
-                } 
+                } else {
+                    print("Stock is empty.")
+                }
             } else if menuOption == 2 {
                 let numberInColumn = sales[0].count
                 print("These are sales that have been made so far: \n")
@@ -118,7 +123,11 @@ struct SwiftPlayground {
             } else if menuOption == 3 {
                 print("There is currently \(kumaraStock)kg of Kumara left.")
             } else if menuOption == 4 {
-                // let kumaraPerBag = kumaraSoldTotal / bagsUsed
+                let totalKumaraWeight = rowTotal(in: sales, row: 0)
+                let totalBagsBought = rowTotal(in: sales, row: 1)
+
+                let kumaraPerBag = (totalKumaraWeight / totalBagsBought).rounded()
+                print("The amount of Kumara that we should have for pre-bagged Kumara sales is \(kumaraPerBag)kg.")
             } else if menuOption == 5 {
                 print("How much Kumara in kilograms will you add to the stock?")
                 if let input = readLine(), let kumaraAdded = Double(input), kumaraAdded > 0 {
